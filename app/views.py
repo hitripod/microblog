@@ -33,7 +33,7 @@ def before_request():
         db.session.add(g.user)
         db.session.commit()
         g.search_form = SearchForm()
-    g.locale = get_locale()
+    g.locale = "en"#get_locale()
 
 
 @app.after_request
