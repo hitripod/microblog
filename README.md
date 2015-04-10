@@ -27,6 +27,6 @@ Running
 To run the application in the development web server just execute `run.py` with the Python interpreter from the flask virtual environment.
 
 * python db_creat.py
-* python db_migrate.py
+* python db_migrate.py (optional)
 * python db_upgrade.py
 * python run.py
