@@ -105,6 +105,11 @@ class Post(db.Model):
     def __repr__(self):  # pragma: no cover
         return '<Post %r>' % (self.body)
 
+class XMLResource(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    value = db.Column(db.String(140))
+    language = db.Column(db.String(5))
+
 
 if enable_search:
     whooshalchemy.whoosh_index(app, Post)

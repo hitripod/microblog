@@ -8,7 +8,7 @@ from datetime import datetime
 from guess_language import guessLanguage
 from app import app, db, lm, oid, babel
 from .forms import LoginForm, EditForm, PostForm, SearchForm
-from .models import User, Post
+from .models import *
 from .emails import follower_notification
 from .translate import microsoft_translate
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, \
@@ -242,3 +242,26 @@ def translate():
             request.form['text'],
             request.form['sourceLang'],
             request.form['destLang'])})
+
+@app.route('/dbtest', methods=['GET', 'POST'])
+def dbtest():
+    xmlres = XMLResource(value='English', language='en')
+
+    return render_template('dbtest.html',
+                           xmlres=xmlres)
+    #form = PostForm()
+    #if form.validate_on_submit():
+    #    language = guessLanguage(form.post.data)
+    #    if language == 'UNKNOWN' or len(language) > 5:
+    #        language = ''
+    #    post = Post(body=form.post.data, timestamp=datetime.utcnow(),
+    #                author=g.user, language=language)
+    #    db.session.add(post)
+    #    db.session.commit()
+    #    flash(gettext('Your post is now live!'))
+    #    return redirect(url_for('index'))
+    #posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
+    #return render_template('index.html',
+    #                       title='Home',
+    #                       form=form,
+    #                       posts=posts)
